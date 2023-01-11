@@ -1,8 +1,11 @@
 def solution(emergency):
-    answer = [1*len(emergency)]
-    for i in range(0, len(emergency)):
-        if emergency[i]<emergency[i+1]:
-            answer[i]+=1
-        else:
-            answer[i+1]+=1
+    answer = []
+    for num in emergency:
+        turn = 1
+        for i in range(0, len(emergency)):
+            if num<emergency[i]:
+                turn+=1
+            else:
+                continue
+        answer.append(turn)
     return answer
