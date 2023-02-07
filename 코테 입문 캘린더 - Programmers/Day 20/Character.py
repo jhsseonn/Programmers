@@ -1,15 +1,19 @@
 def solution(keyinput, board):
-    answer = []
-    answer.append(0)
-    answer.append(0)
+    limit_x = (board[0]-1)//2
+    limit_y = (board[1]-1)//2
+
+    state = {
+        "up": [0, 1],
+        "down": [0, -1],
+        "right": [1, 0],
+        "left": [-1, 0]
+    }
+
+    x = y = 0
     for key in keyinput:
-        if key=="right" and answer[0]<=(board[0]//2):
-            answer[0]+=1
-        elif key=="left" and abs(answer[0])<=(board[0]//2):
-            answer[0]-=1
-        elif key=="up" and answer[1]<=(board[1]//2):
-            answer[1]+=1
-        elif key=="down" and abs(answer[1])<=(board[1]//2):
-            answer[1]-=1
+        dx, dy = state[key]
+        nx, ny = x+dx, y+dy
+        if abs(nx)<=limit_x and abs(ny)<=limit_y:
+            x, y = nx, ny
     
-    return answer
+    return [x, y]
