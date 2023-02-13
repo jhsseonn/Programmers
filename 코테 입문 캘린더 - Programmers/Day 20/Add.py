@@ -5,16 +5,25 @@ def solution(polynomial):
     num = 0
     num2 = 0
     for p in poly:
-        if ("x" in p) and p!="x":
-            num+=int(p[0])
-        if p=="x":
-            num+=1
-        if "x" not in p:
+        if p.isnumeric():
             num2+=int(p)
-
-    if num2!=0:
+        else:
+            if p=="x":
+                num+=1
+            if "x" in p and p!="x":
+                num+=int(p[:-1])
+            
+    if num!=0 and num2!=0:
         answer = "{}x + {}".format(num, num2)
-    else:
+    if num!=0 and num2==0:
         answer = "{}x".format(num)
+    if num==1 and num2!=0:
+        answer = "x + {}".format(num2)
+    if num==1 and num2==0:
+        answer = "x"
+    if num==0 and num2!=0:
+        answer = "{}".format(num2)
+    if num==0 and num2==0:
+        answer = "0"
 
     return answer
