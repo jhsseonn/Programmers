@@ -1,6 +1,3 @@
 def solution(sides):
-    answer = 0
 
-    
-
-    return answer
+    return 2*sorted(sides)[0]-1
