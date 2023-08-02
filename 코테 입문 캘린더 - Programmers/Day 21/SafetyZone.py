@@ -13,8 +13,7 @@ def solution(board):
                         if board[x][y]==0:
                             answer+=1
     
+
+
     
-
-                    
-
     return answer
