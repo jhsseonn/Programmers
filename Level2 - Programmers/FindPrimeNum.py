@@ -2,8 +2,13 @@ import itertools
 
 def solution(numbers):
     answer = 0
+    num_list = list(numbers.split())
     
-    
+    for i in range(1, len(numbers)):
+        nCr=itertools.combination(num_list,i)
+        for j in nCr:
+            if isPrimeNum(j):
+                answer+=1
     
     return answer
 
