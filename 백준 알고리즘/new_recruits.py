@@ -3,22 +3,18 @@ counts = []
 
 def get_new_recruit():
     n = int(input())
-    paper = []
-    interview = []
+    recruit = []
+    for i in range(n):
+        recruit.append(list(map(int, input().split())))
 
+    recruit.sort(key=lambda x:x[0])
+    count = 1
+    min = recruit[0][1]
     for i in range(n):
-        p, i = map(int, input().split())
-        paper.append(p)
-        interview.append(i)
-    
-    count = 0
-    for i in range(n):
-        for j in range(0, n):
-            if(paper[i]>paper[j] & interview[i]>interview[j]):
-                break
-            if(j==n-1):
-                count+=1
-    
+        if (min > recruit[i][1]):
+            min = recruit[i][1]
+            count+=1
+
     counts.append(count)
 
 for i in range(test_case):
