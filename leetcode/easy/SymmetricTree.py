@@ -4,11 +4,12 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# class Solution:
-#     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-#         if root.left and root.right==null:
-#             return True
-#         if root.left==null or root.right==null:
-#             return False
-#         if root.left!=null and root.right!=null:
-#             return self.isSymmetric(root.left) and self.isSymmetric(root.right)
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        def isSubtreeSymmetric(left, right):
+            if not left and not right: return True
+            if not left or not right: return False
+            else:
+                return left.val == right.val and isSubtreeSymmetric(left.left, right.right) and isSubtreeSymmetric(left.right, right.left)
+
+        return isSubtreeSymmetric(root, root)
